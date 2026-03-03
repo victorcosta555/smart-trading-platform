@@ -1,3 +1,28 @@
 spring:
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
   application:
     name: auth-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth_db
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+      properties:
+        hibernate:
+          format_sql: true
+
+jwt:
+  secret: my-secret-key-my-secret-key
+  expiration: 3600000
+
+logging:
+  level:
+    org.flywaydb: DEBUG
